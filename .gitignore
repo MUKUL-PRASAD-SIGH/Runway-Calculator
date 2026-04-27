@@ -39,3 +39,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# project-specific: build outputs & legacy files
+/dist
+/out
+/docs
+/.vite
+
+# generated documentation
+repo_dump.md
+
+# AI agent metadata
+AGENTS.md
+CLAUDE.md
+
+# legacy vite config (replaced by Next.js)
+tailwind.config.js
+vite.config.js
+
+# local scripts
+repo_updater.py
