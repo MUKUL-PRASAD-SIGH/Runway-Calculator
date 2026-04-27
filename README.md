@@ -2,6 +2,8 @@
 
 A premium, high-utility financial runway calculator designed for startup founders to visualize their survival line with precision.
 
+**[🔗 Live Demo](https://runwayycalculator.netlify.app/)**
+
 ## 🎯 Why Runway.ai?
 
 Managing startup capital isn't just about math; it's about **urgency and clarity**. Most calculators are static spreadsheets. **Runway.ai** is a real-time decision-making tool that helps you see the immediate impact of every financial move.
