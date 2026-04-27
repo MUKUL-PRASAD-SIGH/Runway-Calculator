@@ -1,46 +1,69 @@
-# Runway Calculator 🚀
+# Runway.ai 🚀
 
-A modern, highly visual runway calculator built to help founders and operators understand their financial survival line at a glance.
+A premium, high-utility financial runway calculator designed for startup founders to visualize their survival line with precision.
 
-## 🎯 The Problem
+## 🎯 Why Runway.ai?
 
-Most financial calculators are boring, static, and require manual recalculations. They output plain text numbers that don't convey urgency or provide visual context. When you're managing startup capital, you need to feel the impact of your burn rate instantly.
+Managing startup capital isn't just about math; it's about **urgency and clarity**. Most calculators are static spreadsheets. **Runway.ai** is a real-time decision-making tool that helps you see the immediate impact of every financial move.
 
-## 💡 Why This Design?
+---
 
-I focused on **real-time feedback and visual urgency** to help founders make faster financial decisions. 
+## ✨ New "Real Tool" Features
 
-- **Color Psychology:** The interface automatically shifts between Safe (Green), Warning (Yellow), and Danger (Red) based on the remaining runway.
-- **Micro-interactions:** Smooth animations, glow effects, and dynamic charts make the numbers feel alive and reactive.
-- **Clarity over Complexity:** The single-purpose layout removes distractions, focusing entirely on the relationship between Cash, Burn, and Time.
+We've moved beyond a basic calculator into a full-fledged utility:
 
-## ✨ Features
+- **Net Burn Calculation**: Supports **Monthly Recurring Revenue (MRR)**. Automatically calculates `Net Burn = Gross Burn - MRR`, providing a realistic look at your sustainability.
+- **Animated Value Dynamics**: Big runway numbers smoothly count up/down on every change, making the financial impact feel tangible.
+- **Burn Reduction Scenarios**: Get instant "What-If" projections (10%, 20%, 30% cuts) and see exactly how many months each cut adds to your life.
+- **Revenue Overlay Chart**: The depletion curve now includes a secondary revenue line, showing exactly where your growth intersects with your spend.
+- **Cash-Out Reference Line**: A vertical marker on the chart highlights the exact "X-Date" where cash hits zero.
+- **Compact Indian Currency**: All numbers are formatted using the Indian system (Lakhs/Crores) for instant readability (e.g., ₹12.5L).
+- **Ramen Profitable Detection**: Special visual states for companies that have achieved self-sustainability.
+- **Contextual Strategic Advice**: Dynamic headers provide one-line strategic guidance based on your current runway safety zone.
 
-- **Real-Time Calculations:** See runway changes instantly as you type or drag the scenario slider.
-- **Visual Urgency States:** Dynamic border glows and color transitions (Safe > 6m, Warning < 6m, Danger < 3m).
-- **Burn Projection Chart:** A smooth area chart visualizing your cash depletion over the coming months.
-- **Exact Survival Date:** Calculates the exact date when cash drops to zero.
-- **Scenario Slider:** Instantly "what-if" your burn rate without typing.
-- **Indian Rupee Formatting:** Automatic `₹` currency formatting with proper comma placement (e.g., 15,00,000).
-- **Dark Mode Support:** Built-in toggle for a sleek, premium dark experience.
+---
+
+## 🎨 Design Aesthetic
+
+- **High-End Glassmorphism**: Deep slate backgrounds with translucent, blurred card layers.
+- **Visual Urgency States**: 
+  - 🟢 **Safe** (> 6 months): Growth-focused UI.
+  - 🟡 **Warning** (3-6 months): Cautionary amber accents.
+  - 🔴 **Critical** (< 3 months): Pulsing red danger zones.
+- **Modern Typography**: Powered by the geometric `Outfit` font for a sleek, tech-forward look.
+
+---
 
 ## 🛠️ Tech Stack
 
-- **React (Vite)**: Fast, modern UI development.
-- **Tailwind CSS**: Utility-first styling for quick, responsive, and beautiful designs.
-- **Recharts**: For the smooth, responsive burn projection area chart.
-- **Lucide React**: Clean, modern iconography.
-- **date-fns**: Accurate date calculations for the survival out-date.
+- **React + Vite**: For ultra-fast UI rendering.
+- **Tailwind CSS v4**: Leveraging the latest in utility-first design.
+- **Recharts**: For the multi-line cash/revenue depletion area charts.
+- **Lucide React**: Clean, minimalist iconography.
+- **date-fns**: Precise date manipulation for cash-out predictions.
+
+---
 
 ## 🚀 Getting Started
 
-1. **Install dependencies:**
+1. **Clone and Install:**
    ```bash
+   git clone https://github.com/MUKUL-PRASAD-SIGH/Runway-Calculator.git
+   cd Runway-Calculator
    npm install
    ```
-2. **Start the development server:**
+2. **Run Locally:**
    ```bash
    npm run dev
    ```
 
+## 📦 Deployment
 
+### Vercel / Netlify
+This project is optimized for zero-config deployment. Simply push to GitHub and connect your repo.
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+
+---
+
+*Designed for high impact, zero friction, and smarter financial decisions.*
