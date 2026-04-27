@@ -11,15 +11,7 @@ Generated on: 28-04-2026 01:22
     package.json
     README.md
     tsconfig.json
-    .vite/
-        deps/
-            package.json
-            _metadata.json
-    docs/
-        feature-runway-calculator.md
-        precision-date-fix.md
     public/
-    runway-v2/
     src/
         app/
             globals.css
@@ -185,74 +177,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
   ],
   "exclude": ["node_modules"]
 }
-```
-
-## File: .vite\deps\package.json
-```json
-{
-  "type": "module"
-}
-```
-
-## File: .vite\deps\_metadata.json
-```json
-{
-  "hash": "53476863",
-  "configHash": "6fd1482b",
-  "lockfileHash": "7c472d3e",
-  "browserHash": "080cf86f",
-  "optimized": {},
-  "chunks": {}
-}
-```
-
-## File: docs\feature-runway-calculator.md
-```markdown
-# Feature: Runway Calculator Application
-
-## Overview
-A newly implemented standalone React application using Vite and Tailwind CSS. The core goal is to provide a highly interactive, visually striking "Runway Calculator" for founders to instantly calculate their financial runway based on Total Cash and Monthly Burn.
-
-## Components Added
-1. **App.jsx**: The main layout holding the input forms and the result visualizations. Integrates Dark Mode toggle and responsive split-pane layout.
-2. **InputField.jsx**: A custom currency input component with focus states and auto-formatting for Indian Rupees (₹).
-3. **ResultCard.jsx**: The primary visualization card. It dynamically changes colors (Emerald for Safe, Amber for Warning, Rose for Danger) and displays the big bold remaining months.
-4. **ProgressBar.jsx**: An animated 0-12+ months visual scale mapping the remaining runway length.
-5. **BurnChart.jsx**: An integrated Recharts AreaChart that plots the cash depletion over the upcoming months.
-
-## Core Logic (utils/calculations.js)
-- `calculateRunwayMonths`: Basic math -> `Total Cash / Monthly Burn`.
-- `calculateRunwayDays`: Extrapolates days using average month length.
-- `calculateSurvivalDate`: Predicts the exact cash-out date using `date-fns`.
-- `getRunwayState`: Determines visual thresholds (safe >= 6, warning >= 3, danger < 3).
-
-## Styling Choices
-- **Tailwind CSS** handles the utility styling.
-- Extracted reusable classes with `clsx` and `tailwind-merge` in `utils/cn.js`.
-- Implemented customized `--background` and `--foreground` CSS variables inside `index.css` to allow fluid toggling between light and dark modes. Added custom glowing keyframes for danger states.
-```
-
-## File: docs\precision-date-fix.md
-```markdown
-# Feature Update: Precision Survival Date
-
-## Overview
-Improved the precision of the "Zero Cash Date" calculation. Previously, the date was calculated by adding integer months to the current date, which caused fractional runway values (e.g., 4.2 months vs 4.8 months) to display the same date due to truncation.
-
-## Changes
-- **Logic Shift**: Switched from `addMonths` to `addDays` for date calculation and added `startOfDay` for consistency.
-- **Accuracy**: Now uses the calculated `runwayDays` (based on an average of 30.44 days per month) to determine the exact survival date.
-- **Consistency**: The date now shifts dynamically as users adjust cash or burn rate sliders and remains stable regardless of the time of day.
-
-## Technical Details
-- File modified: `src/utils/calculations.js`
-- Function updated: `calculateSurvivalDate`
-- New dependency usage: `addDays`, `startOfDay` from `date-fns`
-
-## Verification
-- Today (April 27) + 4.0 months ≈ Aug 27, 2026.
-- Today (April 27) + 4.5 months ≈ Sept 11, 2026.
-- Truncation issue resolved.
 ```
 
 ## File: src\app\globals.css
