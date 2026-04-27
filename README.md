@@ -1,71 +1,36 @@
-# Runway.ai 🚀
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A premium, high-utility financial runway calculator designed for startup founders to visualize their survival line with precision.
+## Getting Started
 
-**[🔗 Live Demo](https://runwayycalculator.netlify.app/)**
+First, run the development server:
 
-## 🎯 Why Runway.ai?
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-Managing startup capital isn't just about math; it's about **urgency and clarity**. Most calculators are static spreadsheets. **Runway.ai** is a real-time decision-making tool that helps you see the immediate impact of every financial move.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## ✨ New "Real Tool" Features
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-We've moved beyond a basic calculator into a full-fledged utility:
+## Learn More
 
-- **Net Burn Calculation**: Supports **Monthly Recurring Revenue (MRR)**. Automatically calculates `Net Burn = Gross Burn - MRR`, providing a realistic look at your sustainability.
-- **Animated Value Dynamics**: Big runway numbers smoothly count up/down on every change, making the financial impact feel tangible.
-- **Burn Reduction Scenarios**: Get instant "What-If" projections (10%, 20%, 30% cuts) and see exactly how many months each cut adds to your life.
-- **Revenue Overlay Chart**: The depletion curve now includes a secondary revenue line, showing exactly where your growth intersects with your spend.
-- **Cash-Out Reference Line**: A vertical marker on the chart highlights the exact "X-Date" where cash hits zero.
-- **Compact Indian Currency**: All numbers are formatted using the Indian system (Lakhs/Crores) for instant readability (e.g., ₹12.5L).
-- **Ramen Profitable Detection**: Special visual states for companies that have achieved self-sustainability.
-- **Contextual Strategic Advice**: Dynamic headers provide one-line strategic guidance based on your current runway safety zone.
+To learn more about Next.js, take a look at the following resources:
 
----
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 🎨 Design Aesthetic
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- **High-End Glassmorphism**: Deep slate backgrounds with translucent, blurred card layers.
-- **Visual Urgency States**: 
-  - 🟢 **Safe** (> 6 months): Growth-focused UI.
-  - 🟡 **Warning** (3-6 months): Cautionary amber accents.
-  - 🔴 **Critical** (< 3 months): Pulsing red danger zones.
-- **Modern Typography**: Powered by the geometric `Outfit` font for a sleek, tech-forward look.
+## Deploy on Vercel
 
----
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## 🛠️ Tech Stack
-
-- **React + Vite**: For ultra-fast UI rendering.
-- **Tailwind CSS v4**: Leveraging the latest in utility-first design.
-- **Recharts**: For the multi-line cash/revenue depletion area charts.
-- **Lucide React**: Clean, minimalist iconography.
-- **date-fns**: Precise date manipulation for cash-out predictions.
-
----
-
-## 🚀 Getting Started
-
-1. **Clone and Install:**
-   ```bash
-   git clone https://github.com/MUKUL-PRASAD-SIGH/Runway-Calculator.git
-   cd Runway-Calculator
-   npm install
-   ```
-2. **Run Locally:**
-   ```bash
-   npm run dev
-   ```
-
-## 📦 Deployment
-
-### Vercel / Netlify
-This project is optimized for zero-config deployment. Simply push to GitHub and connect your repo.
-- **Build Command:** `npm run build`
-- **Output Directory:** `dist`
-
----
-
-*Designed for high impact, zero friction, and smarter financial decisions.*
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

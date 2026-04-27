@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(0 0% 3%);
+  --color-foreground: hsl(0 0% 98%);
+  --color-card: hsl(0 0% 5%);
+  --color-card-foreground: hsl(0 0% 98%);
+  --color-primary: hsl(263.4 70% 50.4%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  --color-border: hsl(0 0% 15%);
+  --color-input: hsl(0 0% 12%);
+  --color-ring: hsl(263.4 70% 50.4%);
+  
+  --radius-2.5xl: 2.5rem;
+}
+
+@layer base {
+  body {
+    background-color: black;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background: radial-gradient(circle at top left, rgba(124, 58, 237, 0.08), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.05), transparent 40%),
+                #050505;
+    min-height: 100vh;
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
+  }
+  
+  .glass-input {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+}
+
+/* 3D-ish Glows */
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Hide number spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

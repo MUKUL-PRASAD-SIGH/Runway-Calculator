@@ -1,233 +1,209 @@
 # Project Repository Dump
-Generated on: 28-04-2026 01:04
+Generated on: 28-04-2026 01:22
 
 ## Project Structure
 ```text
 ./
-    eslint.config.js
-    index.html
+    AGENTS.md
+    CLAUDE.md
+    next-env.d.ts
+    next.config.ts
     package.json
-    postcss.config.js
     README.md
-    tailwind.config.js
-    vite.config.js
+    tsconfig.json
+    .vite/
+        deps/
+            package.json
+            _metadata.json
     docs/
         feature-runway-calculator.md
         precision-date-fix.md
     public/
+    runway-v2/
     src/
-        App.css
-        App.jsx
-        index.css
-        main.jsx
-        assets/
+        app/
+            globals.css
+            layout.tsx
+            page.tsx
         components/
-            AnimatedNumber.jsx
-            BurnChart.jsx
-            InputField.jsx
-            ProgressBar.jsx
-            ResultCard.jsx
-            ScenarioCards.jsx
-        utils/
-            calculations.js
-            cn.js
+            AnimatedNumber.tsx
+            DashboardCard.tsx
+            GoalSimulator.tsx
+            InputField.tsx
+            IntelligencePanel.tsx
+            ProgressBar.tsx
+            RunwayChart.tsx
+        lib/
+            math.ts
+            utils.ts
 ```
 
-## File: eslint.config.js
-```javascript
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
+## File: AGENTS.md
+```markdown
+<!-- BEGIN:nextjs-agent-rules -->
+# This is NOT the Next.js you know
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      globals: globals.browser,
-      parserOptions: { ecmaFeatures: { jsx: true } },
-    },
-  },
-])
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+<!-- END:nextjs-agent-rules -->
 ```
 
-## File: index.html
-```html
-<!doctype html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Runway Calculator</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+## File: CLAUDE.md
+```markdown
+@AGENTS.md
+```
+
+## File: next-env.d.ts
+```typescript
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+import "./.next/dev/types/routes.d.ts";
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
+```
+
+## File: next.config.ts
+```typescript
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+};
+
+export default nextConfig;
 ```
 
 ## File: package.json
 ```json
 {
-  "name": "runway-calculator",
+  "name": "runway-v2",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.38.0",
     "lucide-react": "^1.11.0",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "next": "16.2.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "recharts": "^3.8.1",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@tailwindcss/postcss": "^4.2.4",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "autoprefixer": "^10.5.0",
-    "eslint": "^10.2.1",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.5.0",
-    "postcss": "^8.5.12",
-    "tailwindcss": "^4.2.4",
-    "vite": "^8.0.10"
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
-}
-```
-
-## File: postcss.config.js
-```javascript
-export default {
-  plugins: {
-    '@tailwindcss/postcss': {},
-    autoprefixer: {},
-  },
 }
 ```
 
 ## File: README.md
 ```markdown
-# Runway.ai 🚀
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A premium, high-utility financial runway calculator designed for startup founders to visualize their survival line with precision.
+## Getting Started
 
-**[🔗 Live Demo](https://runwayycalculator.netlify.app/)**
+First, run the development server:
 
-## 🎯 Why Runway.ai?
-
-Managing startup capital isn't just about math; it's about **urgency and clarity**. Most calculators are static spreadsheets. **Runway.ai** is a real-time decision-making tool that helps you see the immediate impact of every financial move.
-
----
-
-## ✨ New "Real Tool" Features
-
-We've moved beyond a basic calculator into a full-fledged utility:
-
-- **Net Burn Calculation**: Supports **Monthly Recurring Revenue (MRR)**. Automatically calculates `Net Burn = Gross Burn - MRR`, providing a realistic look at your sustainability.
-- **Animated Value Dynamics**: Big runway numbers smoothly count up/down on every change, making the financial impact feel tangible.
-- **Burn Reduction Scenarios**: Get instant "What-If" projections (10%, 20%, 30% cuts) and see exactly how many months each cut adds to your life.
-- **Revenue Overlay Chart**: The depletion curve now includes a secondary revenue line, showing exactly where your growth intersects with your spend.
-- **Cash-Out Reference Line**: A vertical marker on the chart highlights the exact "X-Date" where cash hits zero.
-- **Compact Indian Currency**: All numbers are formatted using the Indian system (Lakhs/Crores) for instant readability (e.g., ₹12.5L).
-- **Ramen Profitable Detection**: Special visual states for companies that have achieved self-sustainability.
-- **Contextual Strategic Advice**: Dynamic headers provide one-line strategic guidance based on your current runway safety zone.
-
----
-
-## 🎨 Design Aesthetic
-
-- **High-End Glassmorphism**: Deep slate backgrounds with translucent, blurred card layers.
-- **Visual Urgency States**: 
-  - 🟢 **Safe** (> 6 months): Growth-focused UI.
-  - 🟡 **Warning** (3-6 months): Cautionary amber accents.
-  - 🔴 **Critical** (< 3 months): Pulsing red danger zones.
-- **Modern Typography**: Powered by the geometric `Outfit` font for a sleek, tech-forward look.
-
----
-
-## 🛠️ Tech Stack
-
-- **React + Vite**: For ultra-fast UI rendering.
-- **Tailwind CSS v4**: Leveraging the latest in utility-first design.
-- **Recharts**: For the multi-line cash/revenue depletion area charts.
-- **Lucide React**: Clean, minimalist iconography.
-- **date-fns**: Precise date manipulation for cash-out predictions.
-
----
-
-## 🚀 Getting Started
-
-1. **Clone and Install:**
-   ```bash
-   git clone https://github.com/MUKUL-PRASAD-SIGH/Runway-Calculator.git
-   cd Runway-Calculator
-   npm install
-   ```
-2. **Run Locally:**
-   ```bash
-   npm run dev
-   ```
-
-## 📦 Deployment
-
-### Vercel / Netlify
-This project is optimized for zero-config deployment. Simply push to GitHub and connect your repo.
-- **Build Command:** `npm run build`
-- **Output Directory:** `dist`
-
----
-
-*Designed for high impact, zero friction, and smarter financial decisions.*
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## File: tailwind.config.js
-```javascript
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  darkMode: 'class',
-  theme: {
-    extend: {},
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+
+## File: tsconfig.json
+```json
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  plugins: [],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
 }
 ```
 
-## File: vite.config.js
-```javascript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+## File: .vite\deps\package.json
+```json
+{
+  "type": "module"
+}
+```
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
+## File: .vite\deps\_metadata.json
+```json
+{
+  "hash": "53476863",
+  "configHash": "6fd1482b",
+  "lockfileHash": "7c472d3e",
+  "browserHash": "080cf86f",
+  "optimized": {},
+  "chunks": {}
+}
 ```
 
 ## File: docs\feature-runway-calculator.md
@@ -279,546 +255,743 @@ Improved the precision of the "Zero Cash Date" calculation. Previously, the date
 - Truncation issue resolved.
 ```
 
-## File: src\App.css
-```css
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
-}
-```
-
-## File: src\App.jsx
-```javascript
-import React, { useState } from "react";
-import { Wallet, Flame, TrendingUp, ChevronRight } from "lucide-react";
-import InputField from "./components/InputField";
-import ResultCard from "./components/ResultCard";
-import {
-  calculateRunwayMonths,
-  getRunwayState,
-  calculateNetBurn,
-  formatCurrencyCompact,
-} from "./utils/calculations";
-
-export default function App() {
-  const [totalCash, setTotalCash] = useState(1500000);
-  const [grossBurn, setGrossBurn] = useState(250000);
-  const [mrr, setMrr] = useState(0);
-
-  const netBurn = calculateNetBurn(grossBurn, mrr);
-  const runwayMonths = calculateRunwayMonths(totalCash, netBurn);
-  const state = getRunwayState(runwayMonths);
-
-  return (
-    <div className="min-h-screen flex flex-col relative overflow-x-hidden text-white">
-
-      {/* Background Orbs */}
-      <div className="fixed top-[-15%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-600/10 blur-[150px] pointer-events-none animate-float" />
-      <div className="fixed bottom-[-15%] right-[-10%] w-[50%] h-[50%] rounded-full bg-pink-600/8 blur-[150px] pointer-events-none animate-float" style={{ animationDelay: '4s' }} />
-
-      {/* Header */}
-      <header className="w-full px-8 py-6 flex justify-between items-center z-10">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-white/8 backdrop-blur-md border border-white/10 flex items-center justify-center text-white">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <h1 className="text-xl font-bold tracking-tight text-white">
-            Runway<span className="text-white/30">.ai</span>
-          </h1>
-        </div>
-
-        {/* Live Net Burn Pill */}
-        <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-white/50">
-          <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-          Net Burn: <span className="text-white ml-1">{formatCurrencyCompact(netBurn)}/mo</span>
-        </div>
-      </header>
-
-      {/* Main */}
-      <main className="flex-1 flex flex-col xl:flex-row w-full max-w-[1440px] mx-auto px-6 pb-12 md:px-12 xl:px-16 gap-12 xl:gap-16 items-start justify-center z-10">
-
-        {/* ── Left Column ── */}
-        <div className="w-full xl:w-[420px] shrink-0 flex flex-col gap-10 pt-4">
-
-          {/* Hero */}
-          <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-indigo-400 uppercase tracking-widest">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500" />
-              </span>
-              Real-time Runway
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05]">
-              Know your<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-pink-400">
-                survival line.
-              </span>
-            </h2>
-            <p className="text-white/40 text-base font-light leading-relaxed">
-              Enter your financials. See exactly how long your startup can survive — and what to do about it.
-            </p>
-          </div>
-
-          {/* ── Inputs ── */}
-          <div className="flex flex-col gap-5">
-
-            <InputField
-              label="Total Available Cash"
-              value={totalCash}
-              onChange={setTotalCash}
-              icon={Wallet}
-              placeholder="15,00,000"
-            />
-
-            <InputField
-              label="Gross Monthly Burn"
-              value={grossBurn}
-              onChange={setGrossBurn}
-              icon={Flame}
-              placeholder="2,50,000"
-            />
-
-            <InputField
-              label="Monthly Revenue (MRR)"
-              value={mrr}
-              onChange={setMrr}
-              icon={TrendingUp}
-              placeholder="0"
-            />
-
-            {/* Net burn summary */}
-            {mrr > 0 && (
-              <div className="flex items-center justify-between px-5 py-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-sm">
-                <div className="flex items-center gap-2 text-indigo-400 font-semibold">
-                  <ChevronRight size={14} />
-                  Net Monthly Burn
-                </div>
-                <span className="text-white font-black text-lg tracking-tight">
-                  {formatCurrencyCompact(netBurn)}
-                  {netBurn === 0 && <span className="ml-2 text-emerald-400 text-xs font-bold">Profitable 🎉</span>}
-                </span>
-              </div>
-            )}
-
-            {/* Scenario Slider */}
-            <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <label className="flex justify-between text-[10px] font-bold text-white/40 uppercase tracking-widest mb-5">
-                <span>Burn Rate Scenario</span>
-                <span className="text-indigo-400">₹{new Intl.NumberFormat("en-IN").format(grossBurn)}/mo</span>
-              </label>
-
-              <div className="relative w-full h-2.5 bg-black/50 rounded-full border border-white/10 overflow-hidden">
-                <input
-                  type="range"
-                  min="0"
-                  max={Math.max(totalCash, 1000000)}
-                  step="5000"
-                  value={grossBurn}
-                  onChange={(e) => setGrossBurn(Number(e.target.value))}
-                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                />
-                <div
-                  className="absolute top-0 left-0 h-full bg-gradient-to-r from-indigo-600 to-indigo-400 rounded-full pointer-events-none transition-all duration-75"
-                  style={{ width: `${Math.min((grossBurn / Math.max(totalCash, 1000000)) * 100, 100)}%` }}
-                />
-              </div>
-
-              <div className="flex justify-between text-[10px] font-bold text-white/25 uppercase mt-3 tracking-wider">
-                <span>Cut Costs</span>
-                <span>Spend More</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Right Column ── */}
-        <div className="w-full xl:flex-1 min-w-0">
-          <ResultCard
-            runwayMonths={runwayMonths}
-            totalCash={totalCash}
-            grossBurn={grossBurn}
-            mrr={mrr}
-            netBurn={netBurn}
-            state={state}
-          />
-        </div>
-      </main>
-    </div>
-  );
-}
-```
-
-## File: src\index.css
+## File: src\app\globals.css
 ```css
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Outfit", sans-serif;
-  --color-brand-500: #6366f1;
-  --color-brand-600: #4f46e5;
-  --color-safe: #10b981;
-  --color-warning: #f59e0b;
-  --color-danger: #ef4444;
+  --color-background: hsl(0 0% 3%);
+  --color-foreground: hsl(0 0% 98%);
+  --color-card: hsl(0 0% 5%);
+  --color-card-foreground: hsl(0 0% 98%);
+  --color-primary: hsl(263.4 70% 50.4%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  --color-border: hsl(0 0% 15%);
+  --color-input: hsl(0 0% 12%);
+  --color-ring: hsl(263.4 70% 50.4%);
+  
+  --radius-2.5xl: 2.5rem;
 }
 
 @layer base {
   body {
-    @apply bg-black text-white font-sans antialiased min-h-screen selection:bg-brand-500/30;
-    /* Subtle premium noise texture + gradient */
-    background-color: #050505;
-    background-image: 
-      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.1) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+    background-color: black;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background: radial-gradient(circle at top left, rgba(124, 58, 237, 0.08), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.05), transparent 40%),
+                #050505;
+    min-height: 100vh;
     background-attachment: fixed;
   }
 }
 
-@layer utilities {
-  .glass-panel {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+@layer components {
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
   }
   
   .glass-input {
-    @apply bg-black/40 backdrop-blur-md border border-white/10 hover:border-white/20 focus:border-brand-500/50 focus:bg-white/5 transition-all duration-300;
-  }
-
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-white/50;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
   }
 }
 
-/* Custom animations for premium feel */
+/* 3D-ish Glows */
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.2;
+}
+
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 1; box-shadow: 0 0 40px rgba(244, 63, 94, 0.2); }
-  50% { opacity: 0.8; box-shadow: 0 0 60px rgba(244, 63, 94, 0.4); }
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 10s ease-in-out infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-/* Hide number input spinners */
+/* Hide number spinners */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type="number"] {
-  -moz-appearance: textfield;
+```
+
+## File: src\app\layout.tsx
+```typescript
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Create Next App",
+  description: "Generated by create next app",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
+    </html>
+  );
 }
 ```
 
-## File: src\main.jsx
-```javascript
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+## File: src\app\page.tsx
+```typescript
+"use client";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { 
+  Wallet, 
+  Flame, 
+  TrendingUp, 
+  Share2, 
+  Download, 
+  Activity, 
+  Settings, 
+  Zap,
+  ChevronRight,
+  Info
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+import { 
+  calculateNetBurn, 
+  calculateRunwayMonths, 
+  getRunwayState,
+  calculateSurvivalDate,
+  formatCurrencyCompact 
+} from "@/lib/math";
+import { cn } from "@/lib/utils";
+
+import InputField from "@/components/InputField";
+import DashboardCard from "@/components/DashboardCard";
+import AnimatedNumber from "@/components/AnimatedNumber";
+import ProgressBar from "@/components/ProgressBar";
+import RunwayChart from "@/components/RunwayChart";
+import IntelligencePanel from "@/components/IntelligencePanel";
+import GoalSimulator from "@/components/GoalSimulator";
+
+export default function RunwayDashboard() {
+  // ─── State ───
+  const [totalCash, setTotalCash] = useState(1500000);
+  const [grossBurn, setGrossBurn] = useState(250000);
+  const [mrr, setMrr] = useState(0);
+  const [targetMonths, setTargetMonths] = useState(12);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // ─── Persistence & URL Sync ───
+  useEffect(() => {
+    setIsMounted(true);
+    const saved = localStorage.getItem("runway_data");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setTotalCash(parsed.totalCash ?? 1500000);
+        setGrossBurn(parsed.grossBurn ?? 250000);
+        setMrr(parsed.mrr ?? 0);
+        setTargetMonths(parsed.targetMonths ?? 12);
+      } catch (e) { console.error(e); }
+    }
+
+    // Sync from URL
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("c")) setTotalCash(Number(params.get("c")));
+    if (params.has("b")) setGrossBurn(Number(params.get("b")));
+    if (params.has("m")) setMrr(Number(params.get("m")));
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    localStorage.setItem("runway_data", JSON.stringify({ totalCash, grossBurn, mrr, targetMonths }));
+    
+    // Sync to URL
+    const params = new URLSearchParams();
+    params.set("c", totalCash.toString());
+    params.set("b", grossBurn.toString());
+    params.set("m", mrr.toString());
+    window.history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
+  }, [totalCash, grossBurn, mrr, targetMonths, isMounted]);
+
+  // ─── Calculations ───
+  const netBurn = useMemo(() => calculateNetBurn(grossBurn, mrr), [grossBurn, mrr]);
+  const runwayMonths = useMemo(() => calculateRunwayMonths(totalCash, netBurn), [totalCash, netBurn]);
+  const state = useMemo(() => getRunwayState(runwayMonths), [runwayMonths]);
+  const survivalDate = useMemo(() => calculateSurvivalDate(runwayMonths), [runwayMonths]);
+
+  // ─── Actions ───
+  const handleShare = useCallback(() => {
+    navigator.clipboard.writeText(window.location.href);
+    alert("Shareable link copied to clipboard!");
+  }, []);
+
+  const handleExport = useCallback(() => {
+    window.print();
+  }, []);
+
+  if (!isMounted) return null;
+
+  return (
+    <div className="min-h-screen p-6 md:p-12 max-w-[1600px] mx-auto flex flex-col gap-10">
+      
+      {/* ─── Top Bar ─── */}
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-white shadow-[0_0_30px_rgba(124,58,237,0.4)]">
+            <Activity size={24} />
+          </div>
+          <div className="flex flex-col">
+            <h1 className="text-2xl font-black tracking-tight text-white flex items-center gap-2">
+              Runway<span className="text-primary">.ai</span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/40 uppercase tracking-widest">v2.0</span>
+            </h1>
+            <p className="text-xs font-bold text-white/30 uppercase tracking-[0.2em]">Decision Engine for Founders</p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={handleShare}
+            className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/[0.03] border border-white/10 hover:bg-white/[0.07] hover:border-white/20 text-xs font-bold uppercase tracking-widest transition-all"
+          >
+            <Share2 size={16} className="text-primary" />
+            Share Link
+          </button>
+          <button 
+            onClick={handleExport}
+            className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-primary text-white text-xs font-bold uppercase tracking-widest hover:bg-primary/80 transition-all shadow-lg shadow-primary/20"
+          >
+            <Download size={16} />
+            Export Report
+          </button>
+        </div>
+      </header>
+
+      {/* ─── Main Grid ─── */}
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+        
+        {/* Left Column: Inputs & Intelligence (4 cols) */}
+        <div className="xl:col-span-4 flex flex-col gap-8">
+          
+          <div className="flex flex-col gap-6">
+            <h2 className="text-xs font-black text-white/30 uppercase tracking-[0.3em] pl-1">Financial Inputs</h2>
+            <InputField 
+              label="Total Available Cash" 
+              value={totalCash} 
+              onChange={setTotalCash} 
+              icon={Wallet} 
+              placeholder="e.g. 15,00,000"
+            />
+            <InputField 
+              label="Monthly Gross Burn" 
+              value={grossBurn} 
+              onChange={setGrossBurn} 
+              icon={Flame} 
+              placeholder="e.g. 2,50,000"
+            />
+            <InputField 
+              label="Monthly Revenue (MRR)" 
+              value={mrr} 
+              onChange={setMrr} 
+              icon={TrendingUp} 
+              placeholder="e.g. 50,000"
+            />
+          </div>
+
+          <IntelligencePanel 
+            totalCash={totalCash} 
+            grossBurn={grossBurn} 
+            mrr={mrr} 
+            targetMonths={targetMonths} 
+          />
+
+          <div className="p-6 rounded-3xl bg-white/[0.02] border border-white/5 space-y-4">
+            <div className="flex items-center gap-2 text-[10px] font-bold text-white/30 uppercase tracking-widest">
+              <Settings size={14} />
+              Quick Scenario
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {[0.9, 0.8, 0.7].map((factor, i) => (
+                <button
+                  key={i}
+                  onClick={() => setGrossBurn(Math.round(grossBurn * factor))}
+                  className="px-3 py-2 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 text-[10px] font-bold uppercase tracking-wider transition-colors"
+                >
+                  -{(100 - factor * 100).toFixed(0)}% Burn
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Visualization (8 cols) */}
+        <div className="xl:col-span-8 flex flex-col gap-8">
+          
+          {/* Main Runway Card */}
+          <DashboardCard className="overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="flex flex-col gap-6">
+                <div className={cn(
+                  "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] w-fit",
+                  state === "safe" ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" :
+                  state === "warning" ? "bg-amber-500/10 text-amber-400 border border-amber-500/20" :
+                  "bg-rose-500/10 text-rose-500 border border-rose-500/20"
+                )}>
+                  <div className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+                  {state === "danger" ? "Critical Survival Mode" : state.toUpperCase() + " Runway"}
+                </div>
+
+                <div className="flex flex-col -space-y-4">
+                  <AnimatedNumber 
+                    value={runwayMonths} 
+                    className={cn(
+                      "text-[120px] md:text-[140px] font-black tracking-tighter leading-none transition-colors duration-700",
+                      state === "safe" ? "text-emerald-400" : state === "warning" ? "text-amber-400" : "text-rose-500"
+                    )}
+                  />
+                  <div className="flex items-center gap-4 text-white/30 font-bold uppercase tracking-[0.3em] pl-4">
+                    <ChevronRight size={16} className="text-primary" />
+                    Months of Runway
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1 pl-4 mt-4">
+                  <p className="text-xl font-black text-white/80 tracking-tight">
+                    Cash Out: <span className="text-white">{survivalDate || "Never"}</span>
+                  </p>
+                  <p className="text-sm font-medium text-white/40">
+                    Based on current net burn of {formatCurrencyCompact(netBurn)}/mo
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-8">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-5 rounded-3xl bg-white/5 border border-white/5 flex flex-col gap-1">
+                    <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Total Net Burn</span>
+                    <span className="text-2xl font-black text-white">{formatCurrencyCompact(netBurn)}</span>
+                  </div>
+                  <div className="p-5 rounded-3xl bg-white/5 border border-white/5 flex flex-col gap-1">
+                    <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Days Remaining</span>
+                    <span className="text-2xl font-black text-white">
+                      {!isFinite(runwayMonths) ? "∞" : Math.round(runwayMonths * 30.4).toLocaleString()}
+                    </span>
+                  </div>
+                </div>
+                
+                <ProgressBar months={isFinite(runwayMonths) ? runwayMonths : 24} state={state} />
+                
+                <div className="p-6 rounded-[2rem] bg-indigo-500/5 border border-indigo-500/10 flex items-start gap-4">
+                  <Zap size={20} className="text-indigo-400 shrink-0 mt-1" />
+                  <p className="text-sm font-medium text-indigo-200/60 leading-relaxed">
+                    {runwayMonths < 6 
+                      ? "Strategic Tip: You are below the 6-month safety line. Start looking at discretionary spending or immediate revenue channels."
+                      : "Strategic Tip: You are in a healthy growth phase. Ensure your burn is directed towards high-ROI activities."}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <RunwayChart 
+              totalCash={totalCash} 
+              grossBurn={grossBurn} 
+              mrr={mrr} 
+              runwayMonths={runwayMonths} 
+              state={state} 
+            />
+          </DashboardCard>
+
+          <GoalSimulator targetMonths={targetMonths} setTargetMonths={setTargetMonths} />
+
+          <div className="flex items-center gap-3 p-6 rounded-[2rem] bg-white/[0.02] border border-white/5">
+            <Info size={20} className="text-white/20" />
+            <p className="text-xs text-white/40 leading-relaxed italic">
+              Note: This tool uses monthly average projections. Real-world runway may vary based on seasonal costs and accounts receivable cycles.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer className="mt-12 mb-6 text-center">
+        <p className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em]">
+          Built for High Performance Founders
+        </p>
+      </footer>
+    </div>
+  );
+}
 ```
 
-## File: src\components\AnimatedNumber.jsx
-```javascript
-import React, { useState, useEffect, useRef } from "react";
-import { cn } from "../utils/cn";
+## File: src\components\AnimatedNumber.tsx
+```typescript
+"use client";
 
-/**
- * Animates a number rolling up/down to a new value.
- */
-function useCountUp(target, duration = 800) {
-  const [display, setDisplay] = useState(target);
-  const frameRef = useRef(null);
-  const startRef = useRef({ from: target, start: 0 });
+import React, { useState, useEffect, useRef, memo } from "react";
+
+interface Props {
+  value: number;
+  decimals?: number;
+  className?: string;
+  prefix?: string;
+  suffix?: string;
+}
+
+const AnimatedNumber = memo(({ value, decimals = 1, className, prefix = "", suffix = "" }: Props) => {
+  const [display, setDisplay] = useState(value);
+  const frameRef = useRef<number | null>(null);
+  const startRef = useRef({ from: value, start: 0 });
 
   useEffect(() => {
     if (frameRef.current) cancelAnimationFrame(frameRef.current);
     startRef.current = { from: display, start: performance.now() };
 
-    function step(now) {
+    const duration = 1000;
+
+    function step(now: number) {
       const elapsed = now - startRef.current.start;
       const progress = Math.min(elapsed / duration, 1);
-      // ease-out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = startRef.current.from + (target - startRef.current.from) * eased;
+      const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = startRef.current.from + (value - startRef.current.from) * eased;
       setDisplay(current);
       if (progress < 1) frameRef.current = requestAnimationFrame(step);
     }
-    frameRef.current = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(frameRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [target]);
 
-  return display;
+    frameRef.current = requestAnimationFrame(step);
+    return () => { if (frameRef.current) cancelAnimationFrame(frameRef.current); };
+  }, [value]);
+
+  const isInfinite = !isFinite(value) || value > 999;
+  return <span className={className}>{prefix}{isInfinite ? "∞" : display.toFixed(decimals)}{suffix}</span>;
+});
+
+AnimatedNumber.displayName = "AnimatedNumber";
+export default AnimatedNumber;
+```
+
+## File: src\components\DashboardCard.tsx
+```typescript
+"use client";
+
+import React, { useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  children: React.ReactNode;
+  className?: string;
+  glow?: boolean;
 }
 
-export default function AnimatedNumber({ value, decimals = 1, className }) {
-  const animated = useCountUp(isFinite(value) ? value : 0);
-  const isInfinite = !isFinite(value) || value > 999;
+export default function DashboardCard({ children, className, glow = true }: Props) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+    setIsHovered(false);
+  };
 
   return (
-    <span className={className}>
-      {isInfinite ? "∞" : animated.toFixed(decimals)}
-    </span>
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      className={cn(
+        "glass-card rounded-[2.5rem] p-8 relative group",
+        isHovered ? "border-white/20" : "border-white/10",
+        className
+      )}
+    >
+      <div style={{ transform: "translateZ(50px)" }} className="relative z-10">
+        {children}
+      </div>
+      {glow && <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2.5rem] pointer-events-none" />}
+    </motion.div>
   );
 }
 ```
 
-## File: src\components\BurnChart.jsx
-```javascript
-import React from "react";
-import {
-  AreaChart,
-  Area,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  ReferenceLine,
-} from "recharts";
-import { generateChartData, formatCurrencyCompact } from "../utils/calculations";
+## File: src\components\GoalSimulator.tsx
+```typescript
+"use client";
 
-export default function BurnChart({ totalCash, netBurn, mrr, runwayMonths, state }) {
-  const data = generateChartData(totalCash, netBurn, mrr);
+import React from "react";
+import { Target, Info } from "lucide-react";
+
+interface Props {
+  targetMonths: number;
+  setTargetMonths: (val: number) => void;
+}
+
+export default function GoalSimulator({ targetMonths, setTargetMonths }: Props) {
+  return (
+    <div className="p-8 rounded-[2.5rem] glass-card border-white/10">
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2 text-xs font-bold text-white/40 uppercase tracking-widest"><Target size={14} />Runway Goal</div>
+          <h3 className="text-xl font-bold tracking-tight text-white">Target Months</h3>
+        </div>
+        <div className="text-4xl font-black text-primary tracking-tighter">{targetMonths}<span className="text-xs text-white/40 ml-1">mo</span></div>
+      </div>
+      <div className="space-y-6">
+        <div className="relative group">
+          <input type="range" min="1" max="24" step="1" value={targetMonths} onChange={(e) => setTargetMonths(parseInt(e.target.value))} className="w-full h-3 bg-black/50 rounded-full appearance-none cursor-pointer border border-white/5 overflow-hidden focus:outline-none" />
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 h-1.5 bg-gradient-to-r from-primary to-pink-500 rounded-full pointer-events-none transition-all duration-300" style={{ width: `${(targetMonths / 24) * 100}%` }} />
+        </div>
+        <div className="flex justify-between text-[10px] font-bold text-white/30 uppercase tracking-wider"><span>Short Term</span><span>Sustainability (12m)</span><span>Scale Mode</span></div>
+        <div className="flex items-start gap-3 p-4 rounded-2xl bg-white/[0.03] border border-white/5"><Info size={16} className="text-white/30 shrink-0 mt-0.5" /><p className="text-xs text-white/50 leading-relaxed italic">Most VCs look for at least 18 months of runway. Aim for 12 months for internal sustainability.</p></div>
+      </div>
+    </div>
+  );
+}
+```
+
+## File: src\components\InputField.tsx
+```typescript
+"use client";
+
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+import { LucideIcon } from "lucide-react";
+
+interface Props {
+  label: string;
+  value: number;
+  onChange: (val: number) => void;
+  icon: LucideIcon;
+  placeholder?: string;
+  className?: string;
+}
+
+export default function InputField({ label, value, onChange, icon: Icon, placeholder, className }: Props) {
+  const [isFocused, setIsFocused] = useState(false);
+  const displayValue = value === 0 ? "" : new Intl.NumberFormat("en-IN").format(value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/,/g, "");
+    if (raw === "") { onChange(0); return; }
+    const num = parseFloat(raw);
+    if (!isNaN(num) && num >= 0) onChange(num);
+  };
+
+  return (
+    <div className={cn("flex flex-col gap-3", className)}>
+      <label className="text-[10px] font-bold text-white/30 uppercase tracking-widest pl-1">{label}</label>
+      <div className={cn("relative flex items-center rounded-2xl glass-input px-5 py-4 group transition-all duration-300", isFocused ? "border-primary/40 ring-4 ring-primary/5" : "border-white/5")}>
+        <Icon size={20} className={cn("mr-4 transition-colors", isFocused ? "text-primary" : "text-white/20 group-hover:text-white/40")} />
+        <input type="text" value={displayValue} onChange={handleChange} onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} placeholder={placeholder} className="w-full bg-transparent text-xl font-bold tracking-tight text-white outline-none placeholder-white/10" />
+      </div>
+    </div>
+  );
+}
+```
+
+## File: src\components\IntelligencePanel.tsx
+```typescript
+"use client";
+
+import React from "react";
+import { getFounderInsights, formatCurrencyCompact } from "@/lib/math";
+import { motion, AnimatePresence } from "framer-motion";
+import { Lightbulb, TrendingUp, AlertTriangle, CheckCircle2, ChevronRight } from "lucide-react";
+
+interface Props {
+  totalCash: number;
+  grossBurn: number;
+  mrr: number;
+  targetMonths: number;
+}
+
+export default function IntelligencePanel({ totalCash, grossBurn, mrr, targetMonths }: Props) {
+  const insights = getFounderInsights(totalCash, grossBurn, mrr, targetMonths);
+  if (!insights) {
+    return (
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-4 p-6 rounded-3xl bg-emerald-500/5 border border-emerald-500/20">
+        <div className="flex items-center gap-3 text-emerald-400 font-bold uppercase tracking-widest text-[10px]">
+          <CheckCircle2 size={16} />
+          Safe Position
+        </div>
+        <p className="text-white/60 text-sm leading-relaxed">
+          You have achieved your target of {targetMonths} months runway. Focus on growth or strategic reinvestment.
+        </p>
+      </motion.div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col gap-5">
+      <div className="flex items-center gap-3 text-indigo-400 font-bold uppercase tracking-widest text-[10px] pl-1">
+        <Lightbulb size={16} />
+        Founder Intelligence
+      </div>
+      <AnimatePresence mode="wait">
+        <motion.div key={targetMonths} initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }} className="grid grid-cols-1 gap-4">
+          <div className="p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-colors group">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-white/30 uppercase tracking-wider">Burn Target</span>
+                <p className="text-sm font-medium text-white/70">To survive {targetMonths} months, you need to reduce net burn by:</p>
+              </div>
+              <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-400"><TrendingUp size={18} /></div>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="text-3xl font-black text-white tracking-tighter">{formatCurrencyCompact(insights.reductionNeeded)}</span>
+              <span className="text-xs font-bold text-rose-500 flex items-center gap-1"><ChevronRight size={12} className="rotate-90" />{insights.percentageCut.toFixed(1)}% Cut</span>
+            </div>
+          </div>
+          <div className="p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-colors group">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-white/30 uppercase tracking-wider">Revenue Target</span>
+                <p className="text-sm font-medium text-white/70">Alternatively, close the gap by adding:</p>
+              </div>
+              <div className="p-2 rounded-xl bg-pink-500/10 text-pink-400"><TrendingUp size={18} /></div>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="text-3xl font-black text-white tracking-tighter">{formatCurrencyCompact(insights.revenueNeeded)}</span>
+              <span className="text-xs font-bold text-emerald-400">New MRR</span>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+      {targetMonths > 18 && (
+        <div className="flex items-center gap-3 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10 text-amber-500/70 text-[10px] font-bold uppercase tracking-wider">
+          <AlertTriangle size={14} />
+          Targeting 18+ months often requires a fundraise.
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## File: src\components\ProgressBar.tsx
+```typescript
+"use client";
+
+import React from "react";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+
+interface Props {
+  months: number;
+  state: string;
+}
+
+export default function ProgressBar({ months, state }: Props) {
+  const percentage = Math.min((months / 18) * 100, 100);
+  const colors: Record<string, string> = {
+    safe: "from-emerald-500 to-teal-400 shadow-[0_0_20px_rgba(16,185,129,0.3)]",
+    warning: "from-amber-500 to-orange-400 shadow-[0_0_20px_rgba(245,158,11,0.3)]",
+    danger: "from-rose-600 to-pink-500 shadow-[0_0_20px_rgba(225,29,72,0.3)]",
+  };
+  const activeColor = colors[state] || colors.safe;
+
+  return (
+    <div className="w-full">
+      <div className="flex justify-between text-[9px] font-black text-white/20 uppercase tracking-[0.2em] mb-4 px-1"><span>0 Months</span><span>6 Months</span><span>12 Months</span><span>18+ Months</span></div>
+      <div className="h-2.5 w-full bg-white/[0.03] border border-white/5 rounded-full overflow-hidden relative">
+        <motion.div initial={{ width: 0 }} animate={{ width: `${percentage}%` }} transition={{ duration: 1.5, ease: "easeOut" }} className={cn("h-full rounded-full bg-gradient-to-r relative z-10", activeColor)} />
+        <div className="absolute inset-0 flex justify-between px-[33%] pointer-events-none opacity-20"><div className="w-px h-full bg-white/40" /><div className="w-px h-full bg-white/40" /></div>
+      </div>
+    </div>
+  );
+}
+```
+
+## File: src\components\RunwayChart.tsx
+```typescript
+"use client";
+
+import React from "react";
+import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, ReferenceLine, CartesianGrid } from "recharts";
+import { generateChartData } from "@/lib/math";
+import { formatCurrencyCompact } from "@/lib/utils";
+
+interface Props {
+  totalCash: number;
+  grossBurn: number;
+  mrr: number;
+  runwayMonths: number;
+  state: string;
+}
+
+export default function RunwayChart({ totalCash, grossBurn, mrr, runwayMonths, state }: Props) {
+  const data = generateChartData(totalCash, grossBurn, mrr);
   if (!data.length) return null;
 
-  const colorMap = {
-    safe: "#34d399",
-    warning: "#fbbf24",
-    danger: "#f43f5e",
-  };
-  const chartColor = colorMap[state];
+  const colorMap: Record<string, string> = { safe: "#10b981", warning: "#f59e0b", danger: "#ef4444" };
+  const chartColor = colorMap[state] || colorMap.safe;
 
-  // Month index at zero
-  const zeroIdx = data.findIndex((d) => d.cash === 0);
-  const zeroMonth = zeroIdx >= 0 ? data[zeroIdx].month : null;
-
-  const CustomTooltip = ({ active, payload }) => {
+  const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-black/90 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-2xl">
-          <p className="text-white/40 text-[10px] font-bold uppercase tracking-wider mb-2">
-            {payload[0]?.payload?.fullDate}
-          </p>
-          <div className="flex flex-col gap-1.5">
-            <div className="flex items-center gap-2">
-              <div
-                className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: chartColor }}
-              />
-              <span className="text-white/60 text-xs">Cash</span>
-              <span className="text-white font-bold text-sm ml-auto pl-4">
-                {formatCurrencyCompact(payload[0]?.value ?? 0)}
-              </span>
-            </div>
-            {mrr > 0 && (
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-indigo-400" />
-                <span className="text-white/60 text-xs">Revenue</span>
-                <span className="text-white font-bold text-sm ml-auto pl-4">
-                  {formatCurrencyCompact(payload[1]?.value ?? 0)}
-                </span>
-              </div>
-            )}
+        <div className="bg-black/95 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-2xl">
+          <p className="text-white/40 text-[10px] font-bold uppercase tracking-wider mb-2">{payload[0]?.payload?.fullDate}</p>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-3"><div className="w-2 h-2 rounded-full" style={{ backgroundColor: chartColor }} /><span className="text-white/60 text-xs font-medium">Cash</span><span className="text-white font-bold text-sm ml-auto pl-6">{formatCurrencyCompact(payload[0]?.value ?? 0)}</span></div>
+            {mrr > 0 && <div className="flex items-center gap-3"><div className="w-2 h-2 rounded-full bg-indigo-500" /><span className="text-white/60 text-xs font-medium">Revenue</span><span className="text-white font-bold text-sm ml-auto pl-6">{formatCurrencyCompact(payload[1]?.value ?? 0)}</span></div>}
           </div>
         </div>
       );
@@ -827,94 +1000,23 @@ export default function BurnChart({ totalCash, netBurn, mrr, runwayMonths, state
   };
 
   return (
-    <div className="h-52 w-full mt-8">
-      <div className="flex items-center justify-between mb-5">
-        <h3 className="text-[10px] font-bold text-white/40 uppercase tracking-widest">
-          Cash Depletion Curve
-        </h3>
-        {mrr > 0 && (
-          <div className="flex items-center gap-3 text-[10px] font-bold text-white/40 uppercase tracking-wider">
-            <span className="flex items-center gap-1.5">
-              <span
-                className="w-2.5 h-px inline-block"
-                style={{ backgroundColor: chartColor, display: "inline-block" }}
-              />
-              Cash
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-px inline-block bg-indigo-400" />
-              Revenue
-            </span>
-          </div>
-        )}
+    <div className="h-[280px] w-full mt-10">
+      <div className="flex items-center justify-between mb-6 px-1">
+        <h3 className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Cash Depletion Projection</h3>
+        {mrr > 0 && <div className="flex items-center gap-4 text-[10px] font-bold text-white/30 uppercase tracking-wider"><span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full" style={{ backgroundColor: chartColor }} />Cash</span><span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-indigo-500" />Revenue</span></div>}
       </div>
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={data} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
+        <AreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
           <defs>
-            <linearGradient id="colorCash" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor={chartColor} stopOpacity={0.35} />
-              <stop offset="95%" stopColor={chartColor} stopOpacity={0} />
-            </linearGradient>
-            <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#818cf8" stopOpacity={0.25} />
-              <stop offset="95%" stopColor="#818cf8" stopOpacity={0} />
-            </linearGradient>
+            <linearGradient id="colorCash" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor={chartColor} stopOpacity={0.3} /><stop offset="95%" stopColor={chartColor} stopOpacity={0} /></linearGradient>
+            <linearGradient id="colorRev" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#6366f1" stopOpacity={0.2} /><stop offset="95%" stopColor="#6366f1" stopOpacity={0} /></linearGradient>
           </defs>
-          <XAxis
-            dataKey="month"
-            axisLine={false}
-            tickLine={false}
-            tick={{ fontSize: 10, fill: "rgba(255,255,255,0.25)", fontWeight: 600 }}
-            dy={10}
-            minTickGap={20}
-          />
-          <Tooltip
-            content={<CustomTooltip />}
-            cursor={{
-              stroke: "rgba(255,255,255,0.07)",
-              strokeWidth: 1,
-              strokeDasharray: "4 4",
-            }}
-          />
-          {zeroMonth && (
-            <ReferenceLine
-              x={zeroMonth}
-              stroke="rgba(244,63,94,0.4)"
-              strokeDasharray="4 4"
-              label={{
-                value: "Cash Out",
-                position: "insideTopRight",
-                fill: "rgba(244,63,94,0.7)",
-                fontSize: 9,
-                fontWeight: 700,
-              }}
-            />
-          )}
-          <Area
-            type="monotone"
-            dataKey="cash"
-            stroke={chartColor}
-            strokeWidth={3}
-            fillOpacity={1}
-            fill="url(#colorCash)"
-            animationDuration={1200}
-            animationEasing="ease-out"
-            dot={false}
-          />
-          {mrr > 0 && (
-            <Area
-              type="monotone"
-              dataKey="revenue"
-              stroke="#818cf8"
-              strokeWidth={2}
-              strokeDasharray="5 3"
-              fillOpacity={1}
-              fill="url(#colorRevenue)"
-              animationDuration={1200}
-              animationEasing="ease-out"
-              dot={false}
-            />
-          )}
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" vertical={false} />
+          <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: "rgba(255,255,255,0.2)", fontWeight: 700 }} dy={15} />
+          <Tooltip content={<CustomTooltip />} cursor={{ stroke: "rgba(255,255,255,0.1)", strokeWidth: 1 }} />
+          <Area type="monotone" dataKey="cash" stroke={chartColor} strokeWidth={4} fillOpacity={1} fill="url(#colorCash)" animationDuration={1500} />
+          {mrr > 0 && <Area type="monotone" dataKey="revenue" stroke="#6366f1" strokeWidth={2} strokeDasharray="5 5" fillOpacity={1} fill="url(#colorRev)" animationDuration={1500} />}
+          {isFinite(runwayMonths) && runwayMonths > 0 && <ReferenceLine x={data[Math.floor(runwayMonths)]?.month} stroke="rgba(239,68,68,0.3)" strokeDasharray="4 4" label={{ value: "Zero Cash", position: "insideTopRight", fill: "rgba(239,68,68,0.5)", fontSize: 9, fontWeight: 800, textAnchor: "end", dy: 20 }} />}
         </AreaChart>
       </ResponsiveContainer>
     </div>
@@ -922,416 +1024,94 @@ export default function BurnChart({ totalCash, netBurn, mrr, runwayMonths, state
 }
 ```
 
-## File: src\components\InputField.jsx
-```javascript
-import React, { useState } from "react";
-import { cn } from "../utils/cn";
+## File: src\lib\math.ts
+```typescript
+import { addMonths, format, startOfMonth } from "date-fns";
 
-export default function InputField({
-  label,
-  value,
-  onChange,
-  icon: Icon,
-  placeholder,
-  className,
-  isCurrency = true,
-}) {
-  const [isFocused, setIsFocused] = useState(false);
-
-  const displayValue = isCurrency
-    ? value
-      ? new Intl.NumberFormat("en-IN").format(value)
-      : ""
-    : value;
-
-  const handleChange = (e) => {
-    let rawValue = e.target.value.replace(/,/g, "");
-    if (rawValue === "") {
-      onChange(0);
-      return;
-    }
-    const num = Number(rawValue);
-    if (!isNaN(num) && num >= 0) {
-      onChange(num);
-    }
-  };
-
-  return (
-    <div className={cn("flex flex-col gap-3", className)}>
-      <label className="text-sm font-medium text-white/60 tracking-wide uppercase text-xs">
-        {label}
-      </label>
-      <div
-        className={cn(
-          "relative flex items-center rounded-2xl overflow-hidden glass-input group",
-          isFocused ? "shadow-[0_0_20px_rgba(99,102,241,0.2)]" : ""
-        )}
-      >
-        <div className={cn(
-          "flex items-center justify-center pl-5 pr-3 transition-colors duration-300",
-          isFocused ? "text-brand-500" : "text-white/40 group-hover:text-white/60"
-        )}>
-          {Icon ? <Icon size={22} strokeWidth={1.5} /> : <span className="font-medium text-xl">₹</span>}
-        </div>
-        <input
-          type="text"
-          value={displayValue}
-          onChange={handleChange}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          placeholder={placeholder}
-          className="w-full py-4 pr-5 bg-transparent outline-none text-white font-semibold text-2xl tracking-tight placeholder-white/20"
-        />
-        {/* Subtle inner highlight */}
-        <div className="absolute inset-0 pointer-events-none rounded-2xl border border-white/5 mix-blend-overlay"></div>
-      </div>
-    </div>
-  );
-}
-```
-
-## File: src\components\ProgressBar.jsx
-```javascript
-import React from "react";
-import { cn } from "../utils/cn";
-
-export default function ProgressBar({ months, state }) {
-  const progressPercentage = Math.min((months / 12) * 100, 100);
-
-  const colors = {
-    safe: "bg-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.8)]",
-    warning: "bg-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.8)]",
-    danger: "bg-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.8)]",
-  };
-
-  return (
-    <div className="w-full mt-10">
-      <div className="flex justify-between text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3 px-1">
-        <span>0m</span>
-        <span>3m</span>
-        <span>6m</span>
-        <span>9m</span>
-        <span>12m+</span>
-      </div>
-      <div className="relative h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
-        <div
-          className={cn(
-            "h-full rounded-full transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1)",
-            colors[state]
-          )}
-          style={{ width: `${progressPercentage}%` }}
-        >
-          {/* Inner highlight for 3D effect */}
-          <div className="w-full h-full bg-gradient-to-t from-black/20 to-transparent rounded-full" />
-        </div>
-        
-        {/* Scale Markers */}
-        <div className="absolute top-0 left-0 w-full h-full flex justify-between px-[1%] pointer-events-none">
-          <div className="w-px h-full bg-white/10" style={{ left: "0%" }} />
-          <div className="w-px h-full bg-white/10" style={{ left: "25%" }} />
-          <div className="w-px h-full bg-white/10" style={{ left: "50%" }} />
-          <div className="w-px h-full bg-white/10" style={{ left: "75%" }} />
-          <div className="w-px h-full bg-white/10" style={{ left: "100%" }} />
-        </div>
-      </div>
-    </div>
-  );
-}
-```
-
-## File: src\components\ResultCard.jsx
-```javascript
-import React from "react";
-import { cn } from "../utils/cn";
-import ProgressBar from "./ProgressBar";
-import BurnChart from "./BurnChart";
-import ScenarioCards from "./ScenarioCards";
-import AnimatedNumber from "./AnimatedNumber";
-import {
-  calculateRunwayDays,
-  calculateSurvivalDate,
-  formatCurrencyCompact,
-} from "../utils/calculations";
-import { Activity, Zap, TrendingDown } from "lucide-react";
-
-export default function ResultCard({
-  runwayMonths,
-  totalCash,
-  grossBurn,
-  mrr,
-  netBurn,
-  state,
-}) {
-  const isInfinite = !isFinite(runwayMonths) || runwayMonths > 999;
-  const runwayDays = calculateRunwayDays(runwayMonths);
-  const survivalDate = calculateSurvivalDate(runwayMonths);
-
-  const stateConfig = {
-    safe: {
-      text: "Safe Zone",
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10",
-      border: "border-emerald-500/20",
-      glow: "shadow-[0_0_80px_-20px_rgba(52,211,153,0.35)]",
-      badgeText: "text-emerald-400",
-      badgeBorder: "border-emerald-500/30",
-      orbColor: "bg-emerald-500/10",
-      advice: "You're in a strong position. Focus on growth, not survival.",
-    },
-    warning: {
-      text: "Warning",
-      color: "text-amber-400",
-      bg: "bg-amber-500/10",
-      border: "border-amber-500/20",
-      glow: "shadow-[0_0_80px_-20px_rgba(251,191,36,0.35)]",
-      badgeText: "text-amber-400",
-      badgeBorder: "border-amber-500/30",
-      orbColor: "bg-amber-500/10",
-      advice: "Start extending runway now. Raise or cut costs immediately.",
-    },
-    danger: {
-      text: "Critical",
-      color: "text-rose-500",
-      bg: "bg-rose-500/10",
-      border: "border-rose-500/30",
-      glow: "shadow-[0_0_80px_-20px_rgba(244,63,94,0.45)]",
-      badgeText: "text-rose-400",
-      badgeBorder: "border-rose-500/30",
-      orbColor: "bg-rose-500/10",
-      advice: "Immediate action needed. Cut non-essential costs today.",
-    },
-  };
-
-  const config = stateConfig[state] || stateConfig.safe;
-
-  return (
-    <div
-      className={cn(
-        "relative flex flex-col p-8 rounded-[2.5rem] bg-black/50 backdrop-blur-2xl border transition-all duration-700 overflow-hidden",
-        config.border,
-        config.glow
-      )}
-    >
-      {/* Ambient orb */}
-      <div
-        className={cn(
-          "absolute -top-40 -right-40 w-80 h-80 rounded-full blur-[120px] pointer-events-none transition-colors duration-1000",
-          config.orbColor
-        )}
-      />
-
-      {/* Header */}
-      <div className="flex items-center justify-between mb-8 relative z-10">
-        <h2 className="text-xs font-semibold text-white/40 tracking-widest uppercase flex items-center gap-2">
-          <Activity size={14} />
-          Estimated Runway
-        </h2>
-        <div
-          className={cn(
-            "px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider border backdrop-blur-md flex items-center gap-2",
-            config.bg,
-            config.badgeText,
-            config.badgeBorder
-          )}
-        >
-          <div className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-          {config.text}
-        </div>
-      </div>
-
-      {/* Big Number */}
-      <div className="flex items-baseline gap-3 mb-2 relative z-10">
-        <AnimatedNumber
-          value={runwayMonths}
-          decimals={1}
-          className={cn(
-            "text-[100px] md:text-[120px] font-black tracking-tighter leading-none drop-shadow-2xl transition-colors duration-700",
-            config.color
-          )}
-        />
-        <span className="text-2xl font-medium text-white/30 mb-3 tracking-tight">
-          months
-        </span>
-      </div>
-
-      {/* Contextual advice */}
-      <p className="text-sm text-white/40 font-medium mb-8 relative z-10">
-        {config.advice}
-      </p>
-
-      {/* Stat Pills */}
-      {!isInfinite && runwayMonths > 0 && (
-        <div className="grid grid-cols-2 gap-3 relative z-10 mb-2">
-          <div className="flex flex-col gap-1 p-4 rounded-2xl bg-white/5 border border-white/5">
-            <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">
-              Days Left
-            </span>
-            <span className="text-xl font-black text-white tracking-tight">
-              {isInfinite ? "∞" : `~${new Intl.NumberFormat("en-IN").format(runwayDays)}`}
-            </span>
-          </div>
-          <div className="flex flex-col gap-1 p-4 rounded-2xl bg-white/5 border border-white/5">
-            <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">
-              Zero Cash Date
-            </span>
-            <span className="text-xl font-black text-white tracking-tight">
-              {survivalDate ?? "—"}
-            </span>
-          </div>
-          <div className="flex flex-col gap-1 p-4 rounded-2xl bg-white/5 border border-white/5">
-            <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">
-              Net Burn / Mo
-            </span>
-            <span className="text-xl font-black text-white tracking-tight">
-              {formatCurrencyCompact(netBurn)}
-            </span>
-          </div>
-          <div className="flex flex-col gap-1 p-4 rounded-2xl bg-white/5 border border-white/5">
-            <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">
-              MRR Offset
-            </span>
-            <span className="text-xl font-black text-white tracking-tight">
-              {mrr > 0 ? formatCurrencyCompact(mrr) : "—"}
-            </span>
-          </div>
-        </div>
-      )}
-
-      {isInfinite && (
-        <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 font-medium text-center relative z-10 mt-2 mb-4 flex items-center justify-center gap-2">
-          <Zap size={16} />
-          Revenue covers burn. You are ramen profitable!
-        </div>
-      )}
-
-      {runwayMonths === 0 && !isInfinite && (
-        <div className="p-5 rounded-2xl bg-rose-500/15 border border-rose-500/30 text-rose-200 font-bold text-center relative z-10 mt-2 mb-4 tracking-wide">
-          ZERO RUNWAY — IMMEDIATE ACTION REQUIRED
-        </div>
-      )}
-
-      {/* Progress bar */}
-      <div className="relative z-10">
-        <ProgressBar months={isFinite(runwayMonths) ? runwayMonths : 12} state={state} />
-      </div>
-
-      {/* Chart */}
-      {!isInfinite && netBurn > 0 && (
-        <div className="relative z-10">
-          <BurnChart
-            totalCash={totalCash}
-            netBurn={netBurn}
-            mrr={mrr}
-            runwayMonths={runwayMonths}
-            state={state}
-          />
-        </div>
-      )}
-
-      {/* Scenario Cards */}
-      {!isInfinite && grossBurn > 0 && (
-        <div className="relative z-10">
-          <ScenarioCards
-            totalCash={totalCash}
-            grossBurn={grossBurn}
-            mrr={mrr}
-            currentMonths={runwayMonths}
-          />
-        </div>
-      )}
-    </div>
-  );
-}
-```
-
-## File: src\components\ScenarioCards.jsx
-```javascript
-import React from "react";
-import { cn } from "../utils/cn";
-import { formatCurrencyCompact, generateScenarios } from "../utils/calculations";
-import { TrendingDown, ArrowRight } from "lucide-react";
-
-export default function ScenarioCards({ totalCash, grossBurn, mrr, currentMonths }) {
-  const scenarios = generateScenarios(totalCash, grossBurn, mrr);
-
-  return (
-    <div className="mt-10">
-      <div className="flex items-center gap-2 mb-5">
-        <TrendingDown size={14} className="text-white/40" />
-        <h3 className="text-xs font-bold text-white/40 uppercase tracking-widest">
-          Burn Reduction Scenarios
-        </h3>
-      </div>
-      <div className="grid grid-cols-3 gap-3">
-        {scenarios.map((s, i) => {
-          const isInfinite = s.months >= 999;
-          return (
-            <div
-              key={i}
-              className="flex flex-col gap-2 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/[0.08] hover:border-white/10 transition-all duration-200 cursor-default"
-            >
-              <span className="text-[10px] font-bold text-white/40 uppercase tracking-wider">
-                {s.label}
-              </span>
-              <div className="flex items-baseline gap-1">
-                <span className="text-2xl font-black text-white tracking-tight">
-                  {isInfinite ? "∞" : s.months.toFixed(1)}
-                </span>
-                <span className="text-xs text-white/40 font-medium">mo</span>
-              </div>
-              <div className="flex items-center gap-1 text-emerald-400 text-xs font-bold">
-                <ArrowRight size={10} />
-                +{s.gain.toFixed(1)} months
-              </div>
-              <div className="text-[10px] text-white/30 mt-1 font-medium">
-                Burn → {formatCurrencyCompact(s.newBurn)}/mo
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-```
-
-## File: src\utils\calculations.js
-```javascript
-import { addDays, format, startOfDay } from "date-fns";
-
-/**
- * Core Logic: Net Burn = Gross Burn - MRR
- * Runway (months) = Total Cash / Net Burn
- */
-export const calculateNetBurn = (grossBurn, mrr) => {
+export const calculateNetBurn = (grossBurn: number, mrr: number) => {
   return Math.max(grossBurn - mrr, 0);
 };
 
-export const calculateRunwayMonths = (totalCash, netBurn) => {
+export const calculateRunwayMonths = (totalCash: number, netBurn: number) => {
   if (netBurn <= 0) return totalCash > 0 ? Infinity : 0;
-  if (totalCash <= 0) return 0;
   return totalCash / netBurn;
 };
 
-export const calculateRunwayDays = (runwayMonths) => {
-  if (!isFinite(runwayMonths)) return Infinity;
-  return Math.round(runwayMonths * 30.436875);
-};
-
-export const getRunwayState = (runwayMonths) => {
+export const getRunwayState = (runwayMonths: number) => {
   if (!isFinite(runwayMonths) || runwayMonths >= 6) return "safe";
   if (runwayMonths >= 3) return "warning";
   return "danger";
 };
 
-export const calculateSurvivalDate = (runwayMonths) => {
+export const calculateSurvivalDate = (runwayMonths: number) => {
   if (!runwayMonths || runwayMonths <= 0 || !isFinite(runwayMonths)) return null;
-  const runwayDays = calculateRunwayDays(runwayMonths);
-  const targetDate = addDays(startOfDay(new Date()), runwayDays);
+  const targetDate = addMonths(new Date(), runwayMonths);
   return format(targetDate, "dd MMM yyyy");
 };
 
-export const formatCurrency = (amount) => {
+export const formatCurrencyCompact = (amount: number) => {
+  if (amount >= 10000000) return `₹${(amount / 10000000).toFixed(2)}Cr`;
+  if (amount >= 100000) return `₹${(amount / 100000).toFixed(2)}L`;
+  if (amount >= 1000) return `₹${(amount / 1000).toFixed(1)}K`;
+  return `₹${amount.toFixed(0)}`;
+};
+
+export interface Insight {
+  targetMonths: number;
+  reductionNeeded: number;
+  revenueNeeded: number;
+  percentageCut: number;
+}
+
+export function getFounderInsights(totalCash: number, grossBurn: number, mrr: number, targetMonths: number = 12): Insight | null {
+  const netBurn = calculateNetBurn(grossBurn, mrr);
+  const currentMonths = calculateRunwayMonths(totalCash, netBurn);
+  
+  if (currentMonths >= targetMonths) return null;
+  
+  const targetNetBurn = totalCash / targetMonths;
+  const gap = netBurn - targetNetBurn;
+  
+  return {
+    targetMonths,
+    reductionNeeded: gap,
+    revenueNeeded: gap,
+    percentageCut: (gap / grossBurn) * 100
+  };
+}
+
+export const generateChartData = (totalCash: number, grossBurn: number, mrr: number) => {
+  const netBurn = calculateNetBurn(grossBurn, mrr);
+  const runwayMonths = calculateRunwayMonths(totalCash, netBurn);
+  
+  const displayMonths = Math.min(Math.max(Math.ceil(isFinite(runwayMonths) ? runwayMonths : 0) + 2, 6), 24);
+  const baseDate = startOfMonth(new Date());
+  
+  return Array.from({ length: displayMonths + 1 }).map((_, i) => {
+    const date = addMonths(baseDate, i);
+    const cashRemaining = Math.max(totalCash - netBurn * i, 0);
+    const cumulativeRevenue = mrr * i;
+    
+    return {
+      month: format(date, "MMM"),
+      fullDate: format(date, "MMM yyyy"),
+      cash: cashRemaining,
+      revenue: Math.min(cumulativeRevenue, totalCash),
+    };
+  });
+};
+```
+
+## File: src\lib\utils.ts
+```typescript
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "INR",
@@ -1339,69 +1119,11 @@ export const formatCurrency = (amount) => {
   }).format(amount);
 };
 
-export const formatCurrencyCompact = (amount) => {
-  if (amount >= 10000000) return `₹${(amount / 10000000).toFixed(1)}Cr`;
-  if (amount >= 100000) return `₹${(amount / 100000).toFixed(1)}L`;
+export const formatCurrencyCompact = (amount: number) => {
+  if (amount >= 10000000) return `₹${(amount / 10000000).toFixed(2)}Cr`;
+  if (amount >= 100000) return `₹${(amount / 100000).toFixed(2)}L`;
   if (amount >= 1000) return `₹${(amount / 1000).toFixed(1)}K`;
-  return `₹${amount}`;
+  return `₹${amount.toFixed(0)}`;
 };
-
-/**
- * Generate burn reduction scenarios
- */
-export const generateScenarios = (totalCash, grossBurn, mrr) => {
-  const scenarios = [
-    { label: "Cut Burn 10%", burn: grossBurn * 0.9 },
-    { label: "Cut Burn 20%", burn: grossBurn * 0.8 },
-    { label: "Cut Burn 30%", burn: grossBurn * 0.7 },
-  ];
-
-  return scenarios.map((s) => {
-    const netBurn = calculateNetBurn(s.burn, mrr);
-    const months = calculateRunwayMonths(totalCash, netBurn);
-    const currentNetBurn = calculateNetBurn(grossBurn, mrr);
-    const currentMonths = calculateRunwayMonths(totalCash, currentNetBurn);
-    const gain = isFinite(months) ? months - currentMonths : 0;
-    return {
-      label: s.label,
-      newBurn: s.burn,
-      months: isFinite(months) ? months : 999,
-      gain: isFinite(gain) ? gain : 0,
-    };
-  });
-};
-
-/**
- * Generate monthly burn chart data showing cash remaining
- */
-export const generateChartData = (totalCash, netBurn, mrr) => {
-  if (totalCash <= 0 || netBurn <= 0) return [];
-  const runwayMonths = calculateRunwayMonths(totalCash, netBurn);
-  const maxMonths = Math.min(Math.max(Math.ceil(runwayMonths) + 2, 7), 18);
-  const baseDate = startOfDay(new Date());
-  const data = [];
-  for (let i = 0; i <= maxMonths; i++) {
-    const date = addDays(baseDate, i * 30);
-    const cashRemaining = Math.max(totalCash - netBurn * i, 0);
-    const mrrAccumulated = mrr * i;
-    data.push({
-      month: format(date, "MMM"),
-      fullDate: format(date, "MMM yyyy"),
-      cash: cashRemaining,
-      revenue: Math.min(mrrAccumulated, totalCash),
-    });
-  }
-  return data;
-};
-```
-
-## File: src\utils\cn.js
-```javascript
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs) {
-  return twMerge(clsx(inputs));
-}
 ```
 
